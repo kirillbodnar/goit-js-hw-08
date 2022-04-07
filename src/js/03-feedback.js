@@ -17,6 +17,11 @@ fillSavedInput();
 
 function onFormSubmit(e) {
   e.preventDefault();
+
+  const userDataJson = localStorage.getItem(STORAGE_KEY);
+  const userData = JSON.parse(userDataJson);
+  console.log(userData);
+
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
@@ -28,11 +33,11 @@ function onFormInputChange() {
 }
 
 function fillSavedInput() {
-  const savedMessage = localStorage.getItem(STORAGE_KEY);
+  const savedInput = localStorage.getItem(STORAGE_KEY);
 
-  if (savedMessage) {
-    const parsedMessage = JSON.parse(savedMessage);
-    refs.email.value = parsedMessage.email;
-    refs.message.value = parsedMessage.message;
+  if (savedInput) {
+    const parsedInput = JSON.parse(savedInput);
+    refs.email.value = parsedInput.email;
+    refs.message.value = parsedInput.message;
   }
 }
