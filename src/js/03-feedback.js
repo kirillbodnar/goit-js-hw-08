@@ -22,11 +22,11 @@ function onFormSubmit(e) {
   const userData = JSON.parse(userDataJson);
   if (userData.message && userData.email) {
     console.log(userData);
+    e.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
   } else {
-    console.log('Please fill all boxes');
+    console.log('Please fill in all the boxes');
   }
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
 }
 
 function onFormInputChange() {
