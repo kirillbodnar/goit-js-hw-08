@@ -20,8 +20,11 @@ function onFormSubmit(e) {
 
   const userDataJson = localStorage.getItem(STORAGE_KEY);
   const userData = JSON.parse(userDataJson);
-  console.log(userData);
-
+  if (userData.message && userData.email) {
+    console.log(userData);
+  } else {
+    console.log('Please fill all boxes');
+  }
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
